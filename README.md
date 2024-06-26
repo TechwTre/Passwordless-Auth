@@ -24,9 +24,6 @@ Domain Joining
 Remote Desktop Setup
 - Configure Remote Desktop access specifically tailored for non-administrative users, enhancing user accessibility while maintaining security protocols.
 
-
-
-
 <h2>Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines/Compute)
@@ -44,13 +41,13 @@ Remote Desktop Setup
 <h3>Step 1: Install Active Directory in DC-01</h3>
 
 - In the Server Manager dashboard, click Add roles and features and continue the setup
+- Select Active Directory Domain Services and finish the installation
+</p>
   
 ![image](https://github.com/TechwTre/configure-ad/assets/126909509/f7d04c78-25d7-4b33-b44f-32e07f5e1288)
 </p>
 <br />
 
-Select Active Directory Domain Services and finish the installation 
-</p>
 
 <h3>Step 2: Promote DC-01 to Domain Controller </h3>
 
@@ -61,15 +58,14 @@ Select Active Directory Domain Services and finish the installation
 </p>
 <br />
 
--  We will now add a new Forest and set the Root domain name to “mydomain.com”
-<p>
+- We will now add a new Forest and set the Root domain name to “mydomain.com”
+- Finish setup and restart DC-01
+- Log back in with “your username"@mydomain.com
+</p>
   
 ![image](https://github.com/TechwTre/configure-ad/assets/126909509/c1f6fbb6-70d8-40e1-9ac5-c4512e3cd7be)
 </p>
 <br />
-
-- Finish setup and restart DC-01
-- Log back in with “your username"@mydomain.com
 
 <h3>Step 3: Creating an Admin in Active Directory </h3>
 
@@ -150,6 +146,6 @@ This will allow normal users to login to Client-01
 
 <h2>Lesson Learned</h2>
 
-We've successfully concluded the Active Directory Deployment and Configuration phase. Through configuring Active Directory on the Domain Controller, we established our infrastructure by creating a forest, administrator account, and ultimately integrating Client-01 into the domain. In the upcoming project, we'll be generating users and simulating various Active Directory scenarios.
+We've successfully concluded the Active Directory Deployment and Configuration phase. Through configuring Active Directory on the Domain Controller, we established our infrastructure by creating a forest, administrator account, and ultimately integrating Client-01 into the domain. 
 </p>
 <br />
