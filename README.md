@@ -53,6 +53,7 @@ Remote Desktop Setup
 
 - Once the installation is done, notice the flag on the top left of the Server Manager
 - Click on the flag and promote DC-01 to Domain Controller.
+</p>
 
 ![image](https://github.com/TechwTre/configure-ad/assets/126909509/310f6513-bd03-407e-b362-53cc8f86c04f)
 </p>
@@ -71,33 +72,34 @@ Remote Desktop Setup
 
 - Once DC-01 has rebooted, click on tools and select Active Directory Users and Computers
 - Right click on mydomain.com and select new and click on Organizational Unit
+</p>
 
 ![image](https://github.com/TechwTre/configure-ad/assets/126909509/ad63487b-5a4a-4b8e-bff6-476cce6be242)
 </p>
 <br />
 
-We will be creating an OU named _EMPLOYEES and _ADMINS 
+- We will be creating an Organizational Unit named _EMPLOYEES and _ADMINS 
 </p>
 
 ![image](https://github.com/TechwTre/configure-ad/assets/126909509/2f2c4428-e563-4a84-9c37-ece85e0f5372)
 </p>
 <br />
 
-Right click on Users and create a new user named Jane Doe with the username jane_admin
+- Right click on Users and create a new user named Jane Doe with the username jane_admin
 </p>
 
 ![image](https://github.com/TechwTre/configure-ad/assets/126909509/ba885afa-1362-4fec-8046-db5de0b74b3b)
 </p>
 <br />
 
-Now we will turn Jane Doe into an admin by right clicking her name and adding her to the “Domain Admins” Security Group
+- Now we will turn Jane Doe into an admin by right clicking her name and adding her to the “Domain Admins” Security Group
 </p>
 
 ![image](https://github.com/TechwTre/configure-ad/assets/126909509/e1c2ae4f-d0da-4b80-b152-9838ef5dda89)
 </p>
 <br />
 
-Logout of DC-01 and log back in with Jane Doe’s credentials
+- Logout of DC-01 and log back in with Jane Doe’s credentials
 </p>
 
 ![image](https://github.com/TechwTre/configure-ad/assets/126909509/854401e3-e322-4545-a842-545a2696944e)
@@ -106,30 +108,29 @@ Logout of DC-01 and log back in with Jane Doe’s credentials
 
 <h3>Step 4: Join Client-01 to domain</h3>
 
-For Client-01 to join the domain, we first have to set it’s DNS server as DC-01’s private address.
-</p>
-
+- For Client-01 to join the domain, we first have to set it’s DNS server as DC-01’s private address.
 - In the Azure Portal, select Client-01 -> Networking -> Network interface and click on DNS servers
+</p>
 
 ![image](https://github.com/TechwTre/configure-ad/assets/126909509/89dab9af-6460-49cb-96e1-395c49ed7901)
 </p>
 <br />
 
-Select a custom DNS server and type in the private ip address of DC-01 and restart Client-01
+- Select a custom DNS server and type in the private ip address of DC-01 and restart Client-01
 </p>
 
 ![image](https://github.com/TechwTre/configure-ad/assets/126909509/1b67e90e-6bb5-4b99-80e9-1290e3db94c8)
 </p>
 <br />
 
-Now log back in to Client-01 using your original admin credentials. Click start and go to Settings > Rename this PC (advanced) > Change and add “mydomain.com” and login with the admin credentials previously created (jane_admin) 
+- Now log back in to Client-01 using your original admin credentials. Click start and go to Settings > Rename this PC (advanced) > Change and add “mydomain.com” and login with the admin credentials previously created (jane_admin) 
 </p>
 
 ![image](https://github.com/TechwTre/configure-ad/assets/126909509/5a24a834-d8f8-47d6-b31a-bee6633d9df9)
 </p>
 <br />
 
-Once Client-01 has been added, the VM will restart.
+- Once Client-01 has been added, the VM will restart.
 </p>
 
 <h3>Step 5: Setup Remote Desktop for non-administrative users </h3>
@@ -141,7 +142,7 @@ Once Client-01 has been added, the VM will restart.
 </p>
 <br />
 
-This will allow normal users to login to Client-01
+- This will allow normal users to login to Client-01
 </p>
 
 <h2>Lesson Learned</h2>
