@@ -7,27 +7,21 @@
 Building on the first project that set up our simulated Active Directory environment, we now move to the next step in our tutorial series. Welcome to the "Active Directory Deployment and Configuration" project, where we explore the details of deploying and refining an Active Directory system. This project is designed to impart a fundamental understanding of Active Directory services, emphasizing key aspects such as installation, forest creation, user account administration, domain integration, and customized Remote Desktop access.
 </p>
 
-<h2>Prerequisites</h2>
+<h2>Key Objectives:</h2>
 
-<h2>Key Objectives</h2>
-<h3>Active Directory Installation</h3>
-
+Active Directory Installation
 -  Configure and install Active Directory services on the designated Domain Controller virtual machine.
 
-<h3>Forest Creation</h3>
-
+Forest Creation
 - Establish a new Active Directory forest.
 
-<h3>Administrator Account Creation</h3>
-
+Administrator Account Creation
 - Create and administer user accounts with administrative privileges for effective management of the Active Directory environment.
 
-<h3>Domain Joining</h3>
-
+Domain Joining
 - Integrate the Client-01 virtual machine into the established domain, ensuring seamless communication with the Active Directory infrastructure.
 
-<h3>Remote Desktop Setup</h3>
-
+Remote Desktop Setup
 - Configure Remote Desktop access specifically tailored for non-administrative users, enhancing user accessibility while maintaining security protocols.
 
 
@@ -51,31 +45,26 @@ Building on the first project that set up our simulated Active Directory environ
 
 - In the Server Manager dashboard, click Add roles and features and continue the setup
   
-<img width="736" alt="AD-setup" src="https://github.com/TechwTre/ad-deployment-configuration/assets/158519921/bb534e6b-0072-420a-9f74-c03bbcc77016">
+![image](https://github.com/TechwTre/configure-ad/assets/126909509/f7d04c78-25d7-4b33-b44f-32e07f5e1288)
 </p>
 <br />
 
-
-
-
-<p><strong> Select Active Directory Domain Services and finish the installation </strong> </p>
-<p>
+Select Active Directory Domain Services and finish the installation 
 </p>
-
 
 <h3>Step 2: Promote DC-01 to Domain Controller </h3>
 
 - Once the installation is done, notice the flag on the top left of the Server Manager
 - Click on the flag and promote DC-01 to Domain Controller.
 
-<img width="242" alt="notif" src="https://github.com/TechwTre/ad-deployment-configuration/assets/158519921/3cb91456-cc00-4e70-8ea2-2b54a5dc8137">
+![image](https://github.com/TechwTre/configure-ad/assets/126909509/310f6513-bd03-407e-b362-53cc8f86c04f)
 </p>
 <br />
 
 -  We will now add a new Forest and set the Root domain name to “mydomain.com”
 <p>
   
-<img width="565" alt="my domain" src="https://github.com/TechwTre/ad-deployment-configuration/assets/158519921/e4d06e9a-a5a4-4e8b-b464-b90ac041cbc8"> </p>
+![image](https://github.com/TechwTre/configure-ad/assets/126909509/c1f6fbb6-70d8-40e1-9ac5-c4512e3cd7be)
 </p>
 <br />
 
@@ -86,73 +75,81 @@ Building on the first project that set up our simulated Active Directory environ
 
 - Once DC-01 has rebooted, click on tools and select Active Directory Users and Computers
 - Right click on mydomain.com and select new and click on Organizational Unit
-- 
-<img width="438" alt="Users" src="https://github.com/TechwTre/ad-deployment-configuration/assets/158519921/23db8c79-84f4-4e6d-befe-77505518cb05">
+
+![image](https://github.com/TechwTre/configure-ad/assets/126909509/ad63487b-5a4a-4b8e-bff6-476cce6be242)
 </p>
 <br />
 
-<p><strong> We will be creating an OU named _EMPLOYEES and _ADMINS </strong></p>
+We will be creating an OU named _EMPLOYEES and _ADMINS 
+</p>
 
-<img width="450" alt="admins" src="https://github.com/TechwTre/ad-deployment-configuration/assets/158519921/d64f8f3b-130b-4156-bc08-b16f7b21fc89">
+![image](https://github.com/TechwTre/configure-ad/assets/126909509/2f2c4428-e563-4a84-9c37-ece85e0f5372)
 </p>
 <br />
 
-<p><strong>Right click on Users and create a new user named Jane Doe with the username jane_admin</strong></p>
+Right click on Users and create a new user named Jane Doe with the username jane_admin
+</p>
 
-<img width="323" alt="jane doe" src="https://github.com/TechwTre/ad-deployment-configuration/assets/158519921/5d8f782a-145a-404b-bc83-7a6721b3728d">
+![image](https://github.com/TechwTre/configure-ad/assets/126909509/ba885afa-1362-4fec-8046-db5de0b74b3b)
 </p>
 <br />
 
-<p><strong>Now we will turn Jane Doe into an admin by right clicking her name and adding her to the “Domain Admins” Security Group</strong></p>
+Now we will turn Jane Doe into an admin by right clicking her name and adding her to the “Domain Admins” Security Group
+</p>
 
-<img width="412" alt="add to group" src="https://github.com/TechwTre/ad-deployment-configuration/assets/158519921/08175b12-7a59-4030-b5ef-6ef1983ac6e7">
+![image](https://github.com/TechwTre/configure-ad/assets/126909509/e1c2ae4f-d0da-4b80-b152-9838ef5dda89)
 </p>
 <br />
 
-<p><strong>Logout of DC-01 and log back in with Jane Doe’s credentials</strong></p>
+Logout of DC-01 and log back in with Jane Doe’s credentials
+</p>
 
-<img width="337" alt="jane login" src="https://github.com/TechwTre/ad-deployment-configuration/assets/158519921/751f9854-2aa5-4f94-b641-b355e77a2a32">
+![image](https://github.com/TechwTre/configure-ad/assets/126909509/854401e3-e322-4545-a842-545a2696944e)
 </p>
 <br />
 
+<h3>Step 4: Join Client-01 to domain</h3>
 
-<h3>Step 4: Join Client-01 to domain </h3>
-
-<p><strong> For Client-01 to join the domain, we first have to set it’s DNS server as DC-01’s private address.</strong></p>
+For Client-01 to join the domain, we first have to set it’s DNS server as DC-01’s private address.
+</p>
 
 - In the Azure Portal, select Client-01 -> Networking -> Network interface and click on DNS servers
 
-<img width="735" alt="dns servers" src="https://github.com/TechwTre/ad-deployment-configuration/assets/158519921/13292c41-67f1-4212-95c4-084ac2ec0751">
+![image](https://github.com/TechwTre/configure-ad/assets/126909509/89dab9af-6460-49cb-96e1-395c49ed7901)
 </p>
 <br />
 
-<p><strong>Select a custom DNS server and type in the private ip address of DC-01 and restart Client-01</strong></p>
+Select a custom DNS server and type in the private ip address of DC-01 and restart Client-01
+</p>
 
-<img width="356" alt="dns servers2" src="https://github.com/TechwTre/ad-deployment-configuration/assets/158519921/d7ec7764-9fcd-4d46-8962-f536bcb1007d">
+![image](https://github.com/TechwTre/configure-ad/assets/126909509/1b67e90e-6bb5-4b99-80e9-1290e3db94c8)
 </p>
 <br />
 
-<p><strong> Now log back in to Client-01 using your original admin credentials. Click start and go to Settings > Rename this PC (advanced) > Change and add “mydomain.com” and login with the admin credentials previously created (jane_admin) </strong></p>
+Now log back in to Client-01 using your original admin credentials. Click start and go to Settings > Rename this PC (advanced) > Change and add “mydomain.com” and login with the admin credentials previously created (jane_admin) 
+</p>
 
-<img width="297" alt="remote desktop first login" src="https://github.com/TechwTre/ad-deployment-configuration/assets/158519921/97df566d-84c9-40d2-88b1-769f79af10a6">
+![image](https://github.com/TechwTre/configure-ad/assets/126909509/5a24a834-d8f8-47d6-b31a-bee6633d9df9)
 </p>
 <br />
 
-<p> <strong>Once Client-01 has been added, the VM will restart.</strong></p>
+Once Client-01 has been added, the VM will restart.
+</p>
 
 <h3>Step 5: Setup Remote Desktop for non-administrative users </h3>
 
 - Log back into Client-01 using jane_admin and open Settings > Remote Desktop> User Accounts and click “Select users that can remotely access this PC”
 - Add Domain Users
 
-<img width="343" alt="domain users" src="https://github.com/TechwTre/ad-deployment-configuration/assets/158519921/04eaffe2-1fa3-4c4c-a327-8ea5b63e2c24">
+![image](https://github.com/TechwTre/configure-ad/assets/126909509/e5a31a67-2d14-498d-afe9-bc6f2b914f8b)
 </p>
 <br />
 
-<p><strong>This will allow normal users to login to Client-01</strong></p>
+This will allow normal users to login to Client-01
+</p>
 
-<h2> Final Thoughts </h2>
+<h2>Lesson Learned</h2>
 
-<p>
-We've successfully concluded the Active Directory Deployment and Configuration phase. Through configuring Active Directory on the Domain Controller, we established our infrastructure by creating a forest, administrator account, and ultimately integrating Client-01 into the domain. In the upcoming project, we'll be generating users and simulating various Active Directory scenarios. </p>
-
+We've successfully concluded the Active Directory Deployment and Configuration phase. Through configuring Active Directory on the Domain Controller, we established our infrastructure by creating a forest, administrator account, and ultimately integrating Client-01 into the domain. In the upcoming project, we'll be generating users and simulating various Active Directory scenarios.
+</p>
+<br />
